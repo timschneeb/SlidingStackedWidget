@@ -9,7 +9,7 @@ This is an extended version of QStackedWidget for Qt. Check `slidingstackedwidge
 Copy the `SlidingStackedWidget` subdirectory from this repository into your project folder and add this to your qmake project file:
 
 ```cmake
-include(GraphicEQWidget/GraphicEQWidget.pri)
+include(SlidingStackedWidget/SlidingStackedWidget.pri)
 ```
 
 ### Screenshots
