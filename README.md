@@ -2,6 +2,8 @@
 
 This is an extended version of QStackedWidget for Qt. Check `slidingstackedwidget.h` for a simple API reference. This code is based on an older [wiki post](https://qt.shoutwiki.com/wiki/Extending_QStackedWidget_for_sliding_page_animations_in_Qt) for Symbian devices.
 
+Check my other Qt widgets/add-ons out: <https://timschneeberger.me/qt>
+
 ### Usage
 
 #### Include it in your project
