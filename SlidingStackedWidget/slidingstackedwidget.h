@@ -54,7 +54,8 @@ public slots:
        bool slideInPrev();
        //! Slide to page x
        void slideInIdx(int idx, enum t_direction direction=AUTOMATIC);
-
+        //! Slide to page with widget
+       void slideInWgt(QWidget * widget, enum t_direction direction=AUTOMATIC);
 signals:
        //! Animation is finished
        void animationFinished(void);
@@ -63,7 +64,6 @@ protected slots:
        void animationDoneSlot(void);
 
 protected:
-       void slideInWgt(QWidget * widget, enum t_direction direction=AUTOMATIC);
        QWidget *m_mainwindow;
        int m_speed;
        enum QEasingCurve::Type m_animationtype;

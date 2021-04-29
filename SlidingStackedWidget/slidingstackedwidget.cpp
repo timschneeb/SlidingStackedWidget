@@ -160,6 +160,10 @@ void SlidingStackedWidget::slideInWgt(QWidget * newwidget, enum t_direction dire
        animnow_op->setDuration(m_speed/2);
        animnow_op->setStartValue(1);
        animnow_op->setEndValue(0);
+       connect(animnow_op,&QPropertyAnimation::finished,[=](){
+           if(animnow_op_eff  != nullptr)
+              animnow_op_eff->deleteLater();
+       });
 
        QGraphicsOpacityEffect *animnext_op_eff = new QGraphicsOpacityEffect();
        animnext_op_eff->setOpacity(0);
@@ -168,6 +172,10 @@ void SlidingStackedWidget::slideInWgt(QWidget * newwidget, enum t_direction dire
        animnext_op->setDuration(m_speed/2);
        animnext_op->setStartValue(0);
        animnext_op->setEndValue(1);
+       connect(animnext_op,&QPropertyAnimation::finished,[=](){
+           if(animnext_op_eff != nullptr)
+              animnext_op_eff->deleteLater();
+       });
 
        QPropertyAnimation *animnext = new QPropertyAnimation(widget(next), "pos");
        animnext->setDuration(m_speed);
@@ -185,12 +193,12 @@ void SlidingStackedWidget::slideInWgt(QWidget * newwidget, enum t_direction dire
        m_next=next;
        m_now=now;
        m_active=true;
-       animgroup->start();
+       animgroup->start(QAbstractAnimation::DeleteWhenStopped);
 }
 
 
-void SlidingStackedWidget::animationDoneSlot() {
-
+void SlidingStackedWidget::animationDoneSlot()
+{
    setCurrentIndex(m_next);
    widget(m_now)->hide();
    widget(m_now)->move(m_pnow);
